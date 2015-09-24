@@ -355,7 +355,6 @@ func (h *HCI) handleDisconnectionComplete(b []byte) error {
 	}
 	delete(h.conns, hh)
 	close(c.aclc)
-	h.setAdvertiseEnable(true)
 	return nil
 }
 
