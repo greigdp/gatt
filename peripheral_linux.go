@@ -320,14 +320,14 @@ func (p *peripheral) WriteDescriptor(d *Descriptor, value []byte) error {
 }
 
 func (p *peripheral) setNotifyValue(c *Characteristic, flag uint16,
-	f func(*Characteristic, []byte, error)) error {
+	f func(*Peripheral, *Characteristic, []byte, error)) error {
 	if c.cccd == nil {
 		return errors.New("no cccd") // FIXME
 	}
 	ccc := uint16(0)
 	if f != nil {
 		ccc = flag
-		p.sub.subscribe(c.vh, func(b []byte, err error) { f(c, b, err) })
+		p.sub.subscribe(c.vh, func(b []byte, err error) { f(p, c, b, err) })
 	}
 	b := make([]byte, 5)
 	op := byte(attOpWriteReq)
@@ -348,12 +348,12 @@ func (p *peripheral) setNotifyValue(c *Characteristic, flag uint16,
 }
 
 func (p *peripheral) SetNotifyValue(c *Characteristic,
-	f func(*Characteristic, []byte, error)) error {
+	f func(*Peripheral, *Characteristic, []byte, error)) error {
 	return p.setNotifyValue(c, gattCCCNotifyFlag, f)
 }
 
 func (p *peripheral) SetIndicateValue(c *Characteristic,
-	f func(*Characteristic, []byte, error)) error {
+	f func(*Peripheral, *Characteristic, []byte, error)) error {
 	return p.setNotifyValue(c, gattCCCIndicateFlag, f)
 }
 
