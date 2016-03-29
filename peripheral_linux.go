@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/paypal/gatt/linux"
+	"github.com/greigdp/gatt/linux"
 )
 
 type peripheral struct {

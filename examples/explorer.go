@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/paypal/gatt"
-	"github.com/paypal/gatt/examples/option"
+	"github.com/greigdp/gatt"
+	"github.com/greigdp/gatt/examples/option"
 )
 
 var done = make(chan struct{})
