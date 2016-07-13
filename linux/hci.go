@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/paypal/gatt/linux/cmd"
-	"github.com/paypal/gatt/linux/evt"
+	"github.com/greigdp/gatt/linux/cmd"
+	"github.com/greigdp/gatt/linux/evt"
 )
 
 type HCI struct {
